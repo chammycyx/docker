@@ -1,8 +1,8 @@
-sudo : required
-servicwes:
+sudo: required
+services:
   - docker
 
-before_install
+before_install:
   - docker build -t chammy/complex -f ./client/Docerkfile.dev ./client
 
 script:
@@ -16,7 +16,7 @@ after_success:
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push -t chammy/docker ./client
-  - docker push -t chammy/docker ./nginx
-  - docker push -t chammy/docker ./server
-  - docker push -t chammy/docker ./worker
+  - docker push chammy/docker ./client
+  - docker push chammy/docker ./nginx
+  - docker push chammy/docker ./server
+  - docker push chammy/docker ./worker
