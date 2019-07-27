@@ -2,7 +2,7 @@ sudo : required
 servicwes:
   - docker
 
-before_install
+before_install:
   - docker build -t chammy/complex -f ./client/Docerkfile.dev ./client
 
 script:
