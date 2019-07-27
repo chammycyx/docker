@@ -3,7 +3,7 @@ servicwes:
   - docker
 
 before_install:
-  - docker build -t chammy/complex -f ./client/Docerkfile.dev ./client
+  - docker build -t chammy/complex -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run chammy/complex npm test -- --coverage
