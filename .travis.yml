@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t chammy/complex -f ./client/Dockerfile.dev ./client
+  - docker build -t chammycyx/complex -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run chammy/complex npm test -- --coverage
+  - docker run chammycyx/complex npm test -- --coverage
 
 after_success:
-  - docker build -t chammy/docker-client ./client
-  - docker build -t chammy/docker-nginx ./nginx
-  - docker build -t chammy/docker-server ./server
-  - docker build -t chammy/docker-worker ./worker
+  - docker build -t chammycyx/docker-client ./client
+  - docker build -t chammycyx/docker-nginx ./nginx
+  - docker build -t chammycyx/docker-server ./server
+  - docker build -t chammycyx/docker-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push chammy/docker-client
-  - docker push chammy/docker-nginx
-  - docker push chammy/docker-server
-  - docker push chammy/docker-worker
+  - docker push chammycyx/docker-client
+  - docker push chammycyx/docker-nginx
+  - docker push chammycyx/docker-server
+  - docker push chammycyx/docker-worker
